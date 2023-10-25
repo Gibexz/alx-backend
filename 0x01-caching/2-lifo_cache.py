@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-module: 1-fifo_cache.py
+module: 2-lifo_cache.py
 """
 from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
     """
-    FIFO policiy caching method
+    LIFO policiy caching method
     """
     def __init__(self):
         """
