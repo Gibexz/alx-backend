@@ -17,11 +17,12 @@ class LIFOCache(BaseCaching):
 
     def put(self, key, item):
         """
-        FIFO put method
+        LIFO put method
         """
-        if key in self.cache_data.keys():
-            del self.cache_data[key]
         if key is not None and item is not None:
+            if key in self.cache_data.keys():
+                self.cache_data[key] = item
+                return
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 discarded_key = next(reversed(list(self.cache_data.keys())))
                 del self.cache_data[discarded_key]
@@ -31,7 +32,7 @@ class LIFOCache(BaseCaching):
 
     def get(self, key):
         """
-        FIFO get method
+        LIFO get method
         """
         if key is None or key not in self.cache_data:
             return None
