@@ -11,6 +11,7 @@ class FIFOCache(BaseCaching):
     """
     def __init__(self):
         """
+        init command
         """
         super().__init__()
 
