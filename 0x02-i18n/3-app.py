@@ -2,9 +2,8 @@
 """
 module: 0-app.py
 """
-from flask_babel import Babel
-from flask_babel import _
 from flask import Flask, render_template, request
+from flask_babel import Babel, _
 
 
 app = Flask(__name__)
