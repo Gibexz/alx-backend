@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-module: 0-app.py
+module: 3-app.py codes
 """
 
 from flask import Flask, render_template, request
@@ -12,7 +12,7 @@ babel = Babel(app)
 
 
 class Config:
-    """bable config code"""
+    """the bable config code"""
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
@@ -23,7 +23,7 @@ app.config.from_object(Config)
 
 @babel.localeselector
 def get_locale():
-    """auto language selector"""
+    """an auto language selector"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
