@@ -3,11 +3,7 @@
 module: 4-app.py
 """
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
-
-
-app = Flask(__name__)
-babel = Babel(app)
+from flask_babel import Babel
 
 
 class Config:
@@ -17,7 +13,9 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
+app = Flask(__name__)
 app.config.from_object(Config)
+babel = Babel(app)
 
 
 @babel.localeselector
@@ -36,7 +34,7 @@ def get_locale():
 @app.route("/")
 def hello():
     """a basic flask route"""
-    return render_template('2-index.html')
+    return render_template('4-index.html')
 
 
 if __name__ == '__main__':
