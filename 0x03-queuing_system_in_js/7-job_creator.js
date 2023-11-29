@@ -49,26 +49,24 @@ const jobs = [
   },
 ];
 
-for (const jobObject in jobs) {
-  if (Object.prototype.hasOwnProperty.call(jobs, jobObject)) {
-    const newJob = queue.create('push_notification_code_2', jobObject);
-    newJob
-      .on('enqueue', () => {
-        console.log(`Notification job created: ${newJob.id}`);
-      })
+jobs.forEach((jobObject) => {
+  const newJob = queue.create('push_notification_code_2', jobObject);
+  newJob
+    .on('enqueue', () => {
+      console.log(`Notification job created: ${newJob.id}`);
+    })
 
-      .on('complete', () => {
-        console.log(`Notification job ${newJob.id}completed`);
-      })
+    .on('complete', () => {
+      console.log(`Notification job #${newJob.id} completed`);
+    })
 
-      .on('failed', (error) => {
-        console.log(`Notification job ${newJob.id} failed: ${error}`);
-      })
+    .on('failed', (error) => {
+      console.log(`Notification job ${newJob.id} failed: ${error}`);
+    })
 
-      .on('progress', (progress, data) => {
-        console.log(`Notification job ${newJob.id} ${progress}% complete`);
-      });
+    .on('progress', (progress, data) => {
+      console.log(`Notification job #${newJob.id} ${progress}% complete`);
+    });
 
-    newJob.save();
-  }
-}
+  newJob.save();
+});
