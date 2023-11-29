@@ -1,7 +1,7 @@
 const kue = require('kue');
 
 const createPushNotificationsJobs = (jobs, queue) => {
-  if (Array.isArray(jobs)) {
+  if (Array.isArray(jobs) && jobs.length > 0) {
     jobs.forEach((jobObject) => {
       const newJob = queue.create('push_notification_code_3', jobObject);
       newJob
